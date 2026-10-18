@@ -48,6 +48,39 @@ INSERT INTO `barang` VALUES (1,'M','Beras Premium',2,1,14000),(2,'M','Minyak Gor
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `barang_jenis_vu`
+--
+
+DROP TABLE IF EXISTS `barang_jenis_vu`;
+/*!50001 DROP VIEW IF EXISTS `barang_jenis_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `barang_jenis_vu` AS SELECT 
+ 1 AS `jenis`,
+ 1 AS `jumlah_barang`,
+ 1 AS `harga_min`,
+ 1 AS `harga_max`,
+ 1 AS `harga_rata`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `barang_vu`
+--
+
+DROP TABLE IF EXISTS `barang_vu`;
+/*!50001 DROP VIEW IF EXISTS `barang_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `barang_vu` AS SELECT 
+ 1 AS `id_barang`,
+ 1 AS `barang`,
+ 1 AS `jenis`,
+ 1 AS `satuan`,
+ 1 AS `harga`,
+ 1 AS `status`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `detail_penerimaan`
 --
 
@@ -200,6 +233,21 @@ LOCK TABLES `kartu_stok` WRITE;
 /*!40000 ALTER TABLE `kartu_stok` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kartu_stok` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `margin_aktif_vu`
+--
+
+DROP TABLE IF EXISTS `margin_aktif_vu`;
+/*!50001 DROP VIEW IF EXISTS `margin_aktif_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `margin_aktif_vu` AS SELECT 
+ 1 AS `id_margin`,
+ 1 AS `margin_persen`,
+ 1 AS `created_at`,
+ 1 AS `id_user`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `margin_penjualan`
@@ -380,6 +428,19 @@ INSERT INTO `role` VALUES (1,'Admin'),(2,'Kasir'),(3,'Petugas Gudang'),(4,'Manaj
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `role_vu`
+--
+
+DROP TABLE IF EXISTS `role_vu`;
+/*!50001 DROP VIEW IF EXISTS `role_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `role_vu` AS SELECT 
+ 1 AS `id_role`,
+ 1 AS `peran`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `satuan`
 --
 
@@ -391,7 +452,7 @@ CREATE TABLE `satuan` (
   `nama_satuan` varchar(45) NOT NULL,
   `status` tinyint NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_satuan`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -403,6 +464,20 @@ LOCK TABLES `satuan` WRITE;
 INSERT INTO `satuan` VALUES (1,'Pcs',1),(2,'Kilogram',1),(3,'Liter',1),(4,'Dus',1),(5,'Lusin',0);
 /*!40000 ALTER TABLE `satuan` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `satuan_aktif_vu`
+--
+
+DROP TABLE IF EXISTS `satuan_aktif_vu`;
+/*!50001 DROP VIEW IF EXISTS `satuan_aktif_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `satuan_aktif_vu` AS SELECT 
+ 1 AS `id_satuan`,
+ 1 AS `satuan`,
+ 1 AS `status`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `user`
@@ -433,6 +508,20 @@ INSERT INTO `user` VALUES (1,'admin','240be518fabd2724ddb6f04eeb1da5967448d7e831
 UNLOCK TABLES;
 
 --
+-- Temporary view structure for view `user_vu`
+--
+
+DROP TABLE IF EXISTS `user_vu`;
+/*!50001 DROP VIEW IF EXISTS `user_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `user_vu` AS SELECT 
+ 1 AS `id_user`,
+ 1 AS `pengguna`,
+ 1 AS `id_role`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `vendor`
 --
 
@@ -457,6 +546,146 @@ LOCK TABLES `vendor` WRITE;
 INSERT INTO `vendor` VALUES (1,'PT Sumber Pangan Makmu','Y','A'),(2,'PT Indo Rumah Sejahtera','Y','A'),(3,'CV Berkah Sentosa','Y','A'),(4,'Toko Grosir Pak Harjo','N','A'),(5,'UD Tani Jaya','N','N');
 /*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `vendor_aktif_vu`
+--
+
+DROP TABLE IF EXISTS `vendor_aktif_vu`;
+/*!50001 DROP VIEW IF EXISTS `vendor_aktif_vu`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `vendor_aktif_vu` AS SELECT 
+ 1 AS `id_vendor`,
+ 1 AS `vendor`,
+ 1 AS `badan_hukum`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `barang_jenis_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `barang_jenis_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `barang_jenis_vu` AS select `barang`.`jenis` AS `jenis`,count(0) AS `jumlah_barang`,min(`barang`.`harga`) AS `harga_min`,max(`barang`.`harga`) AS `harga_max`,round(avg(`barang`.`harga`),0) AS `harga_rata` from `barang` group by `barang`.`jenis` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `barang_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `barang_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `barang_vu` AS select `b`.`id_barang` AS `id_barang`,`b`.`nama` AS `barang`,`b`.`jenis` AS `jenis`,`s`.`nama_satuan` AS `satuan`,`b`.`harga` AS `harga`,`b`.`status` AS `status` from (`barang` `b` join `satuan` `s` on((`s`.`id_satuan` = `b`.`id_satuan`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `margin_aktif_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `margin_aktif_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `margin_aktif_vu` AS select `margin_penjualan`.`id_margin` AS `id_margin`,`margin_penjualan`.`persen` AS `margin_persen`,`margin_penjualan`.`created_at` AS `created_at`,`margin_penjualan`.`id_user` AS `id_user` from `margin_penjualan` where (`margin_penjualan`.`status` = 1) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `role_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `role_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `role_vu` AS select `role`.`id_role` AS `id_role`,`role`.`nama_role` AS `peran` from `role` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `satuan_aktif_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `satuan_aktif_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `satuan_aktif_vu` AS select `satuan`.`id_satuan` AS `id_satuan`,`satuan`.`nama_satuan` AS `satuan`,`satuan`.`status` AS `status` from `satuan` where (`satuan`.`status` = 1) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `user_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `user_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `user_vu` AS select `user`.`id_user` AS `id_user`,`user`.`username` AS `pengguna`,`user`.`id_role` AS `id_role` from `user` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `vendor_aktif_vu`
+--
+
+/*!50001 DROP VIEW IF EXISTS `vendor_aktif_vu`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `vendor_aktif_vu` AS select `vendor`.`id_vendor` AS `id_vendor`,`vendor`.`nama_vendor` AS `vendor`,`vendor`.`badan_hukum` AS `badan_hukum` from `vendor` where (`vendor`.`status` = 'A') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -467,4 +696,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-09 14:41:24
+-- Dump completed on 2026-10-18 17:20:17
