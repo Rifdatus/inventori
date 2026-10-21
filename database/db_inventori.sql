@@ -48,22 +48,6 @@ INSERT INTO `barang` VALUES (1,'M','Beras Premium',2,1,14000),(2,'M','Minyak Gor
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `barang_jenis_vu`
---
-
-DROP TABLE IF EXISTS `barang_jenis_vu`;
-/*!50001 DROP VIEW IF EXISTS `barang_jenis_vu`*/;
-SET @saved_cs_client     = @@character_set_client;
-/*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `barang_jenis_vu` AS SELECT 
- 1 AS `jenis`,
- 1 AS `jumlah_barang`,
- 1 AS `harga_min`,
- 1 AS `harga_max`,
- 1 AS `harga_rata`*/;
-SET character_set_client = @saved_cs_client;
-
---
 -- Temporary view structure for view `barang_vu`
 --
 
@@ -562,24 +546,6 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Final view structure for view `barang_jenis_vu`
---
-
-/*!50001 DROP VIEW IF EXISTS `barang_jenis_vu`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `barang_jenis_vu` AS select `barang`.`jenis` AS `jenis`,count(0) AS `jumlah_barang`,min(`barang`.`harga`) AS `harga_min`,max(`barang`.`harga`) AS `harga_max`,round(avg(`barang`.`harga`),0) AS `harga_rata` from `barang` group by `barang`.`jenis` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
 -- Final view structure for view `barang_vu`
 --
 
@@ -696,4 +662,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-10-18 17:20:17
+-- Dump completed on 2026-10-21 23:38:23
