@@ -10,7 +10,7 @@ use Illuminate\Database\QueryException;
 
 class SatuanController extends Controller
 {
-    /* Menampilkan seluruh satuan. */
+    // Menampilkan seluruh satuan. //
     public function index(): View
     {
         $satuan = Satuan::all();
@@ -24,7 +24,7 @@ class SatuanController extends Controller
         return view('satuan.create');
     }
 
-    /* Memvalidasi dan menyimpan satuan baru. */
+    // Memvalidasi dan menyimpan satuan baru. //
     public function store(Request $request): RedirectResponse
     {
         $data = $request->validate([
@@ -38,7 +38,7 @@ class SatuanController extends Controller
             ->with('sukses', 'Satuan berhasil ditambahkan.');
     }
 
-        /** Menampilkan form ubah satuan. */
+        // Menampilkan form ubah satuan. //
     public function edit(int $id): View
     {
         $satuan = Satuan::findOrFail($id);
@@ -46,7 +46,7 @@ class SatuanController extends Controller
         return view('satuan.edit', ['satuan' => $satuan]);
     }
 
-    /** Memvalidasi dan menyimpan perubahan satuan. */
+    // Memvalidasi dan menyimpan perubahan satuan. //
     public function update(Request $request, int $id): RedirectResponse
     {
         $satuan = Satuan::findOrFail($id);
@@ -62,7 +62,7 @@ class SatuanController extends Controller
             ->with('sukses', 'Satuan berhasil diubah.');
     }
 
-        /** Menghapus satuan. */
+        // Menghapus satuan. //
     public function destroy(int $id): RedirectResponse
     {
         $satuan = Satuan::findOrFail($id);
